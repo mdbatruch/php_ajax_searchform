@@ -3,8 +3,13 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
+    define("DB_HOST", 'DEFINE HOST HERE');
+    define("DB_USER", 'DEFINE USER HERE');
+    define("DB_PASS", 'DEFINE PASSWORD HERE');
+    define("DB_NAME", 'DEFINE DB NAME HERE');
 
-    $connection = mysqli_connect("localhost", "root", "root", "search");
+
+    $connection = mysqli_connect("DB_HOST", "DB_USER", "DB_PASS", "DB_NAME");
 
     function confirm_connection() {
         if (mysqli_connect_errno()) {
@@ -17,7 +22,7 @@
 
     $connection or die("Error connecting to database: ".mysqli_error($connection));
     
-    mysqli_select_db($connection, "search") or die(mysqli_error($connection));
+    mysqli_select_db($connection, "DB_NAME") or die(mysqli_error($connection));
 
 
     $query = $_GET['query'];
