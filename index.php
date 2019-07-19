@@ -1,6 +1,32 @@
 <?php
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
+
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
+    define("DB_HOST", 'localhost');
+    define("DB_USER", 'root');
+    define("DB_PASS", 'root');
+    define("DB_NAME", 'search');
+
+
+    $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+    function confirm_connection() {
+        if (mysqli_connect_errno()) {
+            $message = "Connection Failed!";
+            exit($message);
+        }
+    }
+
+    confirm_connection();
+
+    $connection or die("Error connecting to database: ".mysqli_error($connection));
+    
+    mysqli_select_db($connection, DB_NAME) or die(mysqli_error($connection));
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,8 +48,7 @@
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                <!-- <form action="<php $_SERVER['PHP_SELF'] ?>" method="GET"> -->
-                <form id="search" method="get">
+                <form action="search.php" method="GET">
                     <input type="text" id="query" name="query" />
                     <input type="submit" value="search" />
                     <div id="query-warning"></div>
@@ -37,51 +62,5 @@
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
-  <script type="text/javascript">
-
-
-$(document).ready(function() {
-
-    $('#search').submit(function(e){
-
-        e.preventDefault();
-
-        var query = $('#query').val();
-
-        // alert(search);
-
-            $.ajax({
-                type: "GET",
-                url: 'search.php',
-                dataType: 'json',
-                data: {query: query},
-                }).done(function(data){
-
-                    if (!data.success) {
-                        if (data.response) {
-                            $('#query-warning').html('<div class="help-block input-alert-error">' + data.errors.query + '</div>');
-                        } else {
-                            $('#query-warning').html('');
-                        }
-                        $('#form-message').html('<div class="help-block input-alert-error">' + data.message + '</div>');
-                        $('#results').html('');
-                    }  else {
-                        
-                        $('#query-warning').html('');
-
-                        $('#form-message').html('<div class="alert alert-success">' + data.message + '</div>');
-
-                        $('#results').html('<div class="alert alert-success">' + data.results + '</div>');
-
-                    }
-
-                    // alert(data);
-            });
-    });
-
-});
-
-  </script>
 </body>
 </html>
