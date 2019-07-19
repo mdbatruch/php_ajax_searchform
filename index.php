@@ -5,10 +5,10 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
-    define("DB_HOST", 'localhost');
-    define("DB_USER", 'root');
-    define("DB_PASS", 'root');
-    define("DB_NAME", 'search');
+    define("DB_HOST", 'Enter db host here');
+    define("DB_USER", 'Enter dbuser here');
+    define("DB_PASS", 'Enter pass here');
+    define("DB_NAME", 'Enter db name here');
 
 
     $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
