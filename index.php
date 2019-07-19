@@ -2,13 +2,10 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-
-    define("DB_HOST", 'Enter db host here');
-    define("DB_USER", 'Enter dbuser here');
-    define("DB_PASS", 'Enter pass here');
-    define("DB_NAME", 'Enter db name here');
+    define("DB_HOST", 'enter host here');
+    define("DB_USER", 'enter user here');
+    define("DB_PASS", 'enter pass here');
+    define("DB_NAME", 'enter database name here');
 
 
     $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -51,7 +48,6 @@
                 <form action="search.php" method="GET">
                     <input type="text" id="query" name="query" />
                     <input type="submit" value="search" />
-                    <div id="query-warning"></div>
                 </form>
                 <div id="form-message"></div>
                 <div id="results"></div>
