@@ -7,4 +7,4 @@ A couple of simple ways of retrieving data from a database with PHP/Mysql and a 
 4) Test out the search by entering a name and see your results
 5) Should be good.
 
-Master Branch has AJAX included while no-ajax branch as the name suggest, does not.
+Master Branch has AJAX included while no-ajax branch as the name suggests, does not.
